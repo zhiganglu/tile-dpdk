@@ -219,6 +219,10 @@ ifeq ($(CONFIG_RTE_LIBRTE_PMD_PCAP),y)
 LDLIBS += -lrte_pmd_pcap -lpcap
 endif
 
+ifeq ($(CONFIG_RTE_LIBRTE_MPIPE_PMD),y)
+LDLIBS += -lrte_pmd_mpipe
+endif
+
 endif # plugins
 
 LDLIBS += $(EXECENV_LDLIBS)
