@@ -72,10 +72,14 @@ SRCS-y += test_rwlock.c
 SRCS-$(CONFIG_RTE_LIBRTE_TIMER) += test_timer.c
 SRCS-$(CONFIG_RTE_LIBRTE_TIMER) += test_timer_perf.c
 
+ifeq ($(CONFIG_RTE_ARCH),"tile")
+SRCS-y += test_mempool_tile.c
+else
 SRCS-y += test_mempool.c
 SRCS-y += test_mempool_perf.c
-
 SRCS-y += test_mbuf.c
+endif
+
 SRCS-y += test_logs.c
 
 SRCS-y += test_memcpy.c

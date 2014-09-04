@@ -38,7 +38,11 @@ VPATH += $(RTE_SDK)/lib/librte_eal/common
 CFLAGS += -I$(SRCDIR)/include
 CFLAGS += -I$(RTE_SDK)/lib/librte_eal/common/include
 CFLAGS += -I$(RTE_SDK)/lib/librte_ring
+ifeq ($(CONFIG_RTE_ARCH),"tile")
+CFLAGS += -I$(RTE_SDK)/lib/librte_mempool_tile
+else
 CFLAGS += -I$(RTE_SDK)/lib/librte_mempool
+endif
 CFLAGS += -I$(RTE_SDK)/lib/librte_malloc
 CFLAGS += -I$(RTE_SDK)/lib/librte_ether
 CFLAGS += -I$(RTE_SDK)/lib/librte_ivshmem

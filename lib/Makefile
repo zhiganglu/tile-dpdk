@@ -35,7 +35,12 @@ DIRS-$(CONFIG_RTE_LIBC) += libc
 DIRS-$(CONFIG_RTE_LIBRTE_EAL) += librte_eal
 DIRS-$(CONFIG_RTE_LIBRTE_MALLOC) += librte_malloc
 DIRS-$(CONFIG_RTE_LIBRTE_RING) += librte_ring
+ifeq ($(CONFIG_RTE_ARCH),"tile")
+DIRS-$(CONFIG_RTE_LIBRTE_MEMPOOL) += librte_mempool_tile
+ODIR-librte_mempool_tile = librte_mempool
+else
 DIRS-$(CONFIG_RTE_LIBRTE_MEMPOOL) += librte_mempool
+endif
 DIRS-$(CONFIG_RTE_LIBRTE_MBUF) += librte_mbuf
 DIRS-$(CONFIG_RTE_LIBRTE_TIMER) += librte_timer
 DIRS-$(CONFIG_RTE_LIBRTE_CFGFILE) += librte_cfgfile

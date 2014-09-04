@@ -36,7 +36,7 @@
 #include "mempool_osdep.h"
 #include <rte_errno.h>
 
-#ifdef RTE_EXEC_ENV_LINUXAPP
+#if defined(RTE_EXEC_ENV_LINUXAPP) && !defined(RTE_ARCH_TILE)
 
 #include <fcntl.h>
 #include <unistd.h>
