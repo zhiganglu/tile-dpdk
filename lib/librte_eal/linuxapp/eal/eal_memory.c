@@ -316,7 +316,7 @@ map_all_hugepages(struct hugepage_file *hugepg_tbl,
 #endif
 			hugepg_tbl[i].filepath[sizeof(hugepg_tbl[i].filepath) - 1] = '\0';
 		}
-#ifndef RTE_ARCH_X86_64
+#ifdef RTE_ARCH_I686
 		/* for 32-bit systems, don't remap 1G pages, just reuse original
 		 * map address as final map address.
 		 */
@@ -412,7 +412,7 @@ remap_all_hugepages(struct hugepage_file *hugepg_tbl, struct hugepage_info *hpi)
 
 	while (i < hpi->num_pages[0]) {
 
-#ifndef RTE_ARCH_X86_64
+#ifdef RTE_ARCH_I686
 		/* for 32-bit systems, don't remap 1G pages, just reuse original
 		 * map address as final map address.
 		 */
