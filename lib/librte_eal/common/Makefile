@@ -39,7 +39,6 @@ INC += rte_rwlock.h rte_tailq.h rte_interrupts.h rte_alarm.h
 INC += rte_string_fns.h rte_version.h rte_tailq_elem.h
 INC += rte_eal_memconfig.h rte_malloc_heap.h
 INC += rte_hexdump.h rte_devargs.h rte_dev.h
-INC += rte_common_vect.h
 INC += rte_pci_dev_feature_defs.h rte_pci_dev_features.h
 
 ifeq ($(CONFIG_RTE_INSECURE_FUNCTION_WARNING),y)
@@ -47,7 +46,7 @@ INC += rte_warnings.h
 endif
 
 GENERIC_INC := rte_atomic.h rte_byteorder.h rte_cycles.h rte_prefetch.h
-GENERIC_INC += rte_spinlock.h rte_memcpy.h rte_cpuflags.h
+GENERIC_INC += rte_spinlock.h rte_memcpy.h rte_cpuflags.h rte_common_vect.h
 # defined in mk/arch/$(RTE_ARCH)/rte.vars.mk
 ARCH_DIR ?= $(RTE_ARCH)
 ARCH_INC := $(notdir $(wildcard $(RTE_SDK)/lib/librte_eal/common/include/arch/$(ARCH_DIR)/*.h))

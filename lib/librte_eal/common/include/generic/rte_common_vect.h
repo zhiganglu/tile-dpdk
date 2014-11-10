@@ -34,36 +34,6 @@
 #ifndef _RTE_COMMON_VECT_H_
 #define _RTE_COMMON_VECT_H_
 
-/**
- * @file
- *
- * RTE SSE/AVX related header.
- */
-
-#if (defined(__ICC) || (__GNUC__ == 4 &&  __GNUC_MINOR__ < 4))
-
-#ifdef __SSE__
-#include <xmmintrin.h>
-#endif
-
-#ifdef __SSE2__
-#include <emmintrin.h>
-#endif
-
-#if defined(__SSE4_2__) || defined(__SSE4_1__)
-#include <smmintrin.h>
-#endif
-
-#else
-
-#include <x86intrin.h>
-
-#endif
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 typedef __m128i xmm_t;
 
 #define	XMM_SIZE	(sizeof(xmm_t))
@@ -77,17 +47,5 @@ typedef union rte_xmm {
 	uint64_t u64[XMM_SIZE / sizeof(uint64_t)];
 	double   pd[XMM_SIZE / sizeof(double)];
 } rte_xmm_t;
-
-#ifdef RTE_ARCH_I686
-#define _mm_cvtsi128_si64(a) ({ \
-	rte_xmm_t m;            \
-	m.m = (a);              \
-	(m.u64[0]);             \
-})
-#endif
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif /* _RTE_COMMON__VECT_H_ */
