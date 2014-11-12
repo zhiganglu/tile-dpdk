@@ -79,6 +79,10 @@
 #include <malloc_heap.h>
 #include <rte_eth_ring.h>
 
+#ifdef RTE_ARCH_TILE
+#include <rte_mpipe.h>
+#endif
+
 #include "eal_private.h"
 #include "eal_thread.h"
 #include "eal_internal_cfg.h"
@@ -830,6 +834,11 @@ rte_eal_init(int argc, char **argv)
 
 	if (rte_eal_pci_init() < 0)
 		rte_panic("Cannot init PCI\n");
+
+#ifdef RTE_ARCH_TILE
+	if (rte_eal_mpipe_init() < 0)
+		rte_panic("Cannot init mPIPE\n");
+#endif
 
 #ifdef RTE_LIBRTE_IVSHMEM
 	if (rte_eal_ivshmem_init() < 0)

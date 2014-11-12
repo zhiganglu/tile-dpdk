@@ -68,6 +68,9 @@ SRCS-$(CONFIG_RTE_LIBRTE_EAL_LINUXAPP) += eal_alarm.c
 ifeq ($(CONFIG_RTE_LIBRTE_IVSHMEM),y)
 SRCS-$(CONFIG_RTE_LIBRTE_EAL_LINUXAPP) += eal_ivshmem.c
 endif
+ifeq ($(CONFIG_RTE_ARCH),"tile")
+SRCS-$(CONFIG_RTE_LIBRTE_EAL_LINUXAPP) += eal_mpipe_tile.c
+endif
 
 # from common dir
 SRCS-$(CONFIG_RTE_LIBRTE_EAL_LINUXAPP) += eal_common_memzone.c

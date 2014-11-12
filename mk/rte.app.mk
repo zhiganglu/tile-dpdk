@@ -179,6 +179,10 @@ LDLIBS += -lrte_pmd_xenvirt
 LDLIBS += -lxenstore
 endif
 
+ifeq ($(CONFIG_RTE_ARCH),"tile")
+LDLIBS += -lgxio
+endif
+
 ifeq ($(CONFIG_RTE_BUILD_SHARED_LIB),n)
 # plugins (link only if static libraries)
 
