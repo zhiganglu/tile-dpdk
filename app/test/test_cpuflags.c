@@ -80,6 +80,7 @@ test_cpuflags(void)
 	int result;
 	printf("\nChecking for flags from different registers...\n");
 
+#if defined(RTE_ARCH_X86_64) || defined(RTE_ARCH_I686)
 	printf("Check for SSE:\t\t");
 	CHECK_FOR_FLAG(RTE_CPUFLAG_SSE);
 
@@ -115,8 +116,7 @@ test_cpuflags(void)
 
 	printf("Check for INVTSC:\t");
 	CHECK_FOR_FLAG(RTE_CPUFLAG_INVTSC);
-
-
+#endif
 
 	/*
 	 * Check if invalid data is handled properly
