@@ -62,10 +62,11 @@ rte_cpu_check_supported(void)
 	static const enum rte_cpu_flag_t compile_time_flags[] = {
 			RTE_COMPILE_TIME_CPUFLAGS
 	};
+	unsigned count = sizeof(compile_time_flags)/sizeof(compile_time_flags[0]);
 	unsigned i;
 	int ret;
 
-	for (i = 0; i < sizeof(compile_time_flags)/sizeof(compile_time_flags[0]); i++) {
+	for (i = 0; i < count; i++) {
 		ret = rte_cpu_get_flag_enabled(compile_time_flags[i]);
 
 		if (ret < 0) {
